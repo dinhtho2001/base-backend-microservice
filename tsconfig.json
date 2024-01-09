@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": [
+      "api-gateway/src/**/*.ts",
+      "config/**/*.ts",
+      "services/**/*.ts",
+      "types/**/*.ts",
+      "utils/*.ts",
+    ]
+  }
+  
