@@ -16,9 +16,7 @@ export default class UserController {
 
     public async getUser(request: Request, response: Response) {
         try {
-            const test = {
-                abc: "abc"
-            };
+            const { userId } = request.query;
             const user = await this.userService.getUser(1);
             return response.status(200).json(user);
         } catch (error) {

@@ -1,4 +1,3 @@
-// services/UserService/src/models/Role.ts
 
 export default (sequelize: any, DataTypes: any) => {
   const Role = sequelize?.define("Role", {

@@ -1,4 +1,3 @@
-// services/UserService/src/repositories/userRepository.ts
 import models from "../configs/connectDB";
 import BaseRepository from "../../../../utils/baseRepository"
 

@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  api_gateway:
+    image: node:14
+    working_dir: /app/api_gateway
+    volumes:
+      - ./api_gateway:/app/api_gateway
+    command: npm start
+    ports:
+      - "4000:4000"
+    depends_on:
+      - user_service
+      - product_service
+
+  user_service:
+    image: node:14
+    working_dir: /app/user_service
+    volumes:
+      - ./user_service:/app/user_service
+    command: npm start
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mysql_user_service
+
+  mysql_user_service:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: user_service_root_password
+      MYSQL_DATABASE: user_service_db
+      MYSQL_USER: user_service_user
+      MYSQL_PASSWORD: user_service_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql_user_service:/var/lib/mysql
+
+  product_service:
+    image: node:14
+    working_dir: /app/product_service
+    volumes:
+      - ./product_service:/app/product_service
+    command: npm start
+    ports:
+      - "3002:3000"
+    depends_on:
+      - mysql_product_service
+
+  mysql_product_service:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: product_service_root_password
+      MYSQL_DATABASE: product_service_db
+      MYSQL_USER: product_service_user
+      MYSQL_PASSWORD: product_service_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/mysql_product_service:/var/lib/mysql

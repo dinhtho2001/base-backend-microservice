@@ -1,5 +1,4 @@
-// services/UserService/src/config/connectDB.ts
-import { Sequelize, DataTypes, Model  } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import User from '../models/User';
 import Role from '../models/Role';
 import Database from '../../../../config/sequelize';

@@ -1,4 +1,3 @@
-// services/UserService/src/models/User.ts
 
 export default (sequelize: any, DataTypes: any) => {
     const User = sequelize?.define("User", {
