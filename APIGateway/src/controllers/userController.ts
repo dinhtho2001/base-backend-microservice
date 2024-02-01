@@ -15,6 +15,19 @@ class UserController {
             return response.status(500).json(error);
         }
     }
+
+    public async getUser(request: Request, response: Response) {
+        try {
+            const userId = request.params;
+            const queryParam: any = {
+                id: userId
+            } ;
+            const user = await userService.getUser(queryParam);
+            return response.status(200).json(user);
+        } catch (error) {
+            return response.status(500).json(error);
+        }
+    }
     
 }
 

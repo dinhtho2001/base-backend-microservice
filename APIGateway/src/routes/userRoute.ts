@@ -8,6 +8,8 @@ const router = Router();
 
 router.get('', userController.getAll);
 
+router.get('/:userId', userController.getUser);
+
 router.post('/create', (req, res, next) => {
     const { error } = userValidator.createUser.validate(req.body);
     if (error) {

@@ -1,17 +1,14 @@
 {
     "compilerOptions": {
-      "target": "es6",
+      "target": "es2017",
       "module": "commonjs",
       "outDir": "./dist",
       "strict": true,
       "esModuleInterop": true
     },
     "include": [
-      "api-gateway/src/**/*.ts",
-      "config/**/*.ts",
-      "services/**/*.ts",
-      "types/**/*.ts",
-      "utils/**/*.ts", 
+      "src/*.ts",
+      "src/**/*.ts"
     ]
   }
   

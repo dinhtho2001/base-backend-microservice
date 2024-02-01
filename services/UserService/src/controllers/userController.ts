@@ -1,19 +1,29 @@
 import { Request, Response } from 'express';
+import UserService from "../services/userService";
 
-class UserController {
-  
-    public getAll(request: Request, response: Response) {
+export default class UserController {
+    private userService = new UserService();
+
+    public async getAll(request: Request, response: Response) {
         try {
-            //query db
-            const user = [
-                {name: "abc", xxx: "xxx"},
-                {name: "abc", xxx: "xxx"}
-            ]
+            const users = await this.userService.getUsers({});
+            return response.status(200).json(users);
+        } catch (error) {
+            console.error("Error in UserController.getAll:", error);
+            return response.status(500).json({ error: "Internal Server Error" });
+        }
+    }
+
+    public async getUser(request: Request, response: Response) {
+        try {
+            const test = {
+                abc: "abc"
+            };
+            const user = await this.userService.getUser(1);
             return response.status(200).json(user);
         } catch (error) {
-            return response.status(500).json(error);
+            console.error("Error in UserController.getAll:", error);
+            return response.status(500).json({ error: "Internal Server Error" });
         }
     }
 }
-
-export default UserController;
